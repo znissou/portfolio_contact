@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:web_app/components/default_button.dart';
-import 'package:web_app/components/section_title.dart';
-import 'package:web_app/constants.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:portfolio_contact/components/default_button.dart';
+import 'package:portfolio_contact/components/section_title.dart';
+import 'package:portfolio_contact/constants.dart';
 
 import 'components/socal_card.dart';
 
@@ -24,7 +25,7 @@ class ContactSection extends StatelessWidget {
           SizedBox(height: kDefaultPadding * 2.5),
           SectionTitle(
             title: "Contact Me",
-            subTitle: "For Project inquiry and information",
+            subTitle: "For more information",
             color: Color(0xFF07E24A),
           ),
           ContactBox()
@@ -38,6 +39,20 @@ class ContactBox extends StatelessWidget {
   const ContactBox({
     Key? key,
   }) : super(key: key);
+
+  Future<void> openLinkedIn() async {
+    final Uri url = Uri.parse('https://www.linkedin.com/in/anis-zouaghi/');
+    if (!await launchUrl(url)) {
+      throw Exception('Could not launch $url');
+    }
+  }
+
+  Future<void> openWhatsApp() async {
+    final Uri url = Uri.parse('https://wa.me/213559691092');
+    if (!await launchUrl(url)) {
+      throw Exception('Could not launch $url');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -55,25 +70,20 @@ class ContactBox extends StatelessWidget {
       child: Column(
         children: [
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               SocalCard(
                 color: Color(0xFFD9FFFC),
-                iconSrc: "assets/images/skype.png",
-                name: 'TheFlutterWay',
-                press: () {},
+                iconSrc: "assets/images/linkedin.png",
+                iconeScale: 0.8,
+                name: 'LinkedIn',
+                press: openLinkedIn,
               ),
               SocalCard(
                 color: Color(0xFFE4FFC7),
                 iconSrc: "assets/images/whatsapp.png",
-                name: 'TheFlutterWay',
-                press: () {},
-              ),
-              SocalCard(
-                color: Color(0xFFE8F0F9),
-                iconSrc: "assets/images/messanger.png",
-                name: 'TheFlutterWay',
-                press: () {},
+                name: 'WhatsApp',
+                press: openWhatsApp,
               ),
             ],
           ),
@@ -118,46 +128,27 @@ class ContactForm extends StatelessWidget {
             ),
           ),
           SizedBox(
-            width: 470,
             child: TextFormField(
+              minLines: 3,
+              maxLines: 7,
               onChanged: (value) {},
               decoration: InputDecoration(
-                labelText: "Project Type",
-                hintText: "Select Project Type",
+                labelText: "Message",
+                hintText: "Write Your Message",
               ),
             ),
           ),
-          SizedBox(
-            width: 470,
-            child: TextFormField(
-              onChanged: (value) {},
-              decoration: InputDecoration(
-                labelText: "Project Budget",
-                hintText: "Select Project Budget",
-              ),
-            ),
-          ),
-          SizedBox(
-            // height: 300,
-            // TextField by default cover the height, i tryed to fix this problem but i cant
-            child: TextFormField(
-              onChanged: (value) {},
-              decoration: InputDecoration(
-                labelText: "Description",
-                hintText: "Write some description",
+          Align(
+            alignment: Alignment.topRight,
+            child: FittedBox(
+              child: DefaultButton(
+                imageSrc: "assets/images/contact_icon.png",
+                text: "Send Message",
+                press: () {},
               ),
             ),
           ),
           SizedBox(height: kDefaultPadding * 2),
-          Center(
-            child: FittedBox(
-              child: DefaultButton(
-                imageSrc: "assets/images/contact_icon.png",
-                text: "Contact Me!",
-                press: () {},
-              ),
-            ),
-          )
         ],
       ),
     );

@@ -9,11 +9,13 @@ class SocalCard extends StatefulWidget {
     required this.name,
     required this.color,
     required this.press,
+    this.iconeScale = 1,
   }) : super(key: key);
 
   final String iconSrc, name;
   final Color color;
-  final Function()? press;
+  final VoidCallback? press;
+  final double iconeScale;
 
   @override
   _SocalCardState createState() => _SocalCardState();
@@ -46,11 +48,14 @@ class _SocalCardState extends State<SocalCard> {
             children: [
               Image.asset(
                 widget.iconSrc,
-                height: 80,
-                width: 80,
+                height: 80 * widget.iconeScale,
+                width: 80 * widget.iconeScale,
               ),
               SizedBox(width: kDefaultPadding),
-              Text(widget.name),
+              Text(
+                widget.name,
+                style: TextStyle(fontWeight: FontWeight.w600, color: Colors.black87),
+              ),
             ],
           ),
         ),

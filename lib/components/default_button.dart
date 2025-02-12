@@ -15,23 +15,26 @@ class DefaultButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextButton(
-      style: TextButton.styleFrom(
-        foregroundColor: Color(0xFFE8F0F9),
-        padding: EdgeInsets.symmetric(
-          vertical: kDefaultPadding,
-          horizontal: kDefaultPadding * 2.5,
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(backgroundColor: const Color.fromARGB(255, 223, 239, 247)),
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+        child: Row(
+          children: [
+            Image.asset(
+              imageSrc,
+              height: 40,
+              opacity: AlwaysStoppedAnimation(0.8),
+            ),
+            SizedBox(width: kDefaultPadding),
+            Text(
+              text,
+              style: TextStyle(fontWeight: FontWeight.w600, color: Colors.black),
+            ),
+          ],
         ),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
       ),
-      onPressed: press,
-      child: Row(
-        children: [
-          Image.asset(imageSrc, height: 40),
-          SizedBox(width: kDefaultPadding),
-          Text(text),
-        ],
-      ),
+      onPressed: () {},
     );
   }
 }
