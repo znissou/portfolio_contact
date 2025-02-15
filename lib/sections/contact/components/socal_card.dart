@@ -6,13 +6,14 @@ class SocalCard extends StatefulWidget {
   const SocalCard({
     Key? key,
     required this.iconSrc,
-    required this.name,
+    this.name,
     required this.color,
     required this.press,
     this.iconeScale = 1,
   }) : super(key: key);
 
-  final String iconSrc, name;
+  final String? name;
+  final String iconSrc;
   final Color color;
   final VoidCallback? press;
   final double iconeScale;
@@ -39,11 +40,13 @@ class _SocalCardState extends State<SocalCard> {
             vertical: kDefaultPadding / 2,
             horizontal: kDefaultPadding * 1.5,
           ),
-          decoration: BoxDecoration(
-            color: widget.color,
-            borderRadius: BorderRadius.circular(10),
-            boxShadow: [if (isHover) kDefaultCardShadow],
-          ),
+          decoration: widget.name != null
+              ? BoxDecoration(
+                  color: widget.color,
+                  borderRadius: BorderRadius.circular(10),
+                  boxShadow: [if (isHover) kDefaultCardShadow],
+                )
+              : null,
           child: Row(
             children: [
               Image.asset(
@@ -51,11 +54,12 @@ class _SocalCardState extends State<SocalCard> {
                 height: 80 * widget.iconeScale,
                 width: 80 * widget.iconeScale,
               ),
-              SizedBox(width: kDefaultPadding),
-              Text(
-                widget.name,
-                style: TextStyle(fontWeight: FontWeight.w600, color: Colors.black87),
-              ),
+              if (widget.name != null) SizedBox(width: kDefaultPadding),
+              if (widget.name != null)
+                Text(
+                  widget.name ?? '',
+                  style: TextStyle(fontWeight: FontWeight.w600, color: Colors.black87),
+                ),
             ],
           ),
         ),

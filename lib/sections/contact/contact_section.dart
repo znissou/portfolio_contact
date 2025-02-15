@@ -42,6 +42,37 @@ class ContactBox extends StatelessWidget {
     Key? key,
   }) : super(key: key);
 
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      constraints: BoxConstraints(maxWidth: 1110),
+      margin: EdgeInsets.only(top: kDefaultPadding * 2),
+      padding: EdgeInsets.all(kDefaultPadding * 3),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(20),
+          topRight: Radius.circular(20),
+        ),
+      ),
+      child: Column(
+        children: [
+          SocialButtons(),
+          SizedBox(height: kDefaultPadding * 2),
+          ContactForm(),
+        ],
+      ),
+    );
+  }
+}
+
+// ============================
+// MARK: SocialButtons
+// ============================
+
+class SocialButtons extends StatelessWidget {
+  const SocialButtons({super.key});
+
   Future<void> openLinkedIn() async {
     final Uri url = Uri.parse('https://www.linkedin.com/in/anis-zouaghi/');
     if (!await launchUrl(url)) {
@@ -58,42 +89,45 @@ class ContactBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      constraints: BoxConstraints(maxWidth: 1110),
-      margin: EdgeInsets.only(top: kDefaultPadding * 2),
-      padding: EdgeInsets.all(kDefaultPadding * 3),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(20),
-          topRight: Radius.circular(20),
-        ),
-      ),
-      child: Column(
+    if (MediaQuery.of(context).size.width >= 550) {
+      return Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              SocalCard(
-                color: Color(0xFFD9FFFC),
-                iconSrc: "assets/images/linkedin.png",
-                iconeScale: 0.8,
-                name: 'LinkedIn',
-                press: openLinkedIn,
-              ),
-              SocalCard(
-                color: Color(0xFFE4FFC7),
-                iconSrc: "assets/images/whatsapp.png",
-                name: 'WhatsApp',
-                press: openWhatsApp,
-              ),
-            ],
+          SocalCard(
+            color: Color(0xFFD9FFFC),
+            iconSrc: "assets/images/linkedin.png",
+            iconeScale: 0.8,
+            name: 'LinkedIn',
+            press: openLinkedIn,
           ),
-          SizedBox(height: kDefaultPadding * 2),
-          ContactForm(),
+          SocalCard(
+            color: Color(0xFFE4FFC7),
+            iconSrc: "assets/images/whatsapp.png",
+            iconeScale: 0.8,
+            name: 'WhatsApp',
+            press: openWhatsApp,
+          ),
         ],
-      ),
-    );
+      );
+    } else {
+      return Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          SocalCard(
+            color: Color(0xFFD9FFFC),
+            iconSrc: "assets/images/linkedin.png",
+            iconeScale: 0.8,
+            press: openLinkedIn,
+          ),
+          SocalCard(
+            color: Color(0xFFE4FFC7),
+            iconSrc: "assets/images/whatsapp.png",
+            iconeScale: 0.8,
+            press: openWhatsApp,
+          ),
+        ],
+      );
+    }
   }
 }
 
@@ -157,6 +191,7 @@ class _ContactFormState extends State<ContactForm> {
 
   @override
   Widget build(BuildContext context) {
+    final bool isMinimized = MediaQuery.of(context).size.width < 550;
     return Form(
       key: _formKey,
       child: Wrap(
@@ -212,10 +247,10 @@ class _ContactFormState extends State<ContactForm> {
             ),
           ),
           Row(
-            mainAxisAlignment: MainAxisAlignment.end,
+            mainAxisAlignment: !isMinimized ? MainAxisAlignment.end : MainAxisAlignment.center,
             children: [
               Align(
-                  alignment: Alignment.topRight,
+                  alignment: !isMinimized ? Alignment.topRight : Alignment.center,
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                         backgroundColor: !isSent ? const Color.fromARGB(255, 223, 239, 247) : const Color.fromARGB(255, 156, 242, 200)),

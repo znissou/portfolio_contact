@@ -6,15 +6,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
-        child: Column(
-          children: [
-            ContactSection(),
-            // This SizeBox just for demo
-            // SizedBox(
-            //   height: 500,
-            // )
-          ],
-        ),
+        child: ContactSection(),
       ),
     );
   }
