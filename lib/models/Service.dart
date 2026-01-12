@@ -8,7 +8,6 @@ class Service {
   Service({required this.id, required this.title, required this.image, required this.color});
 }
 
-// For demo list of service
 List<Service> services = [
   Service(
     id: 1,

@@ -8,7 +8,6 @@ class Feedback {
   Feedback({required this.name, required this.review, required this.userPic, required this.id, required this.color});
 }
 
-// List of demo feedbacks
 List<Feedback> feedbacks = [
   Feedback(
     id: 1,

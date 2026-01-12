@@ -9,10 +9,6 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           children: [
             ContactSection(),
-            // This SizeBox just for demo
-            // SizedBox(
-            //   height: 500,
-            // )
           ],
         ),
       ),

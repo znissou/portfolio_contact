@@ -25,7 +25,6 @@ class MyOutlineButton extends StatelessWidget {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(50),
           ),
-          // borderSide: BorderSide(color: Color(0xFFEDEDED)),
         ),
         onPressed: press,
         child: Row(
