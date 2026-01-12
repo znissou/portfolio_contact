@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../constants.dart';
+import '../../constants.dart';
 
 /// A reusable section title widget with a colored accent bar
 class SectionTitle extends StatelessWidget {

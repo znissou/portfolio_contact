@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import 'package:portfolio_contact/widgets/section_title.dart';
+import 'package:portfolio_contact/views/widgets/section_title.dart';
 import 'package:portfolio_contact/constants.dart';
 
 import 'components/socal_card.dart';
