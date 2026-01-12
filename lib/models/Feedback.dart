@@ -1,37 +1,41 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio_contact/constants.dart';
 
 class Feedback {
   final String name, review, userPic;
   final int id;
   final Color color;
 
-  Feedback({required this.name, required this.review, required this.userPic, required this.id, required this.color});
+  const Feedback({
+    required this.name,
+    required this.review,
+    required this.userPic,
+    required this.id,
+    required this.color,
+  });
 }
 
-// List of demo feedbacks
-List<Feedback> feedbacks = [
+/// List of feedback items
+const List<Feedback> feedbacks = [
   Feedback(
     id: 1,
     name: "Ronald Thompson",
-    review: review,
+    review: kDefaultReview,
     userPic: "assets/images/people.png",
-    color: Color(0xFFFFF3DD),
+    color: kService3Color,
   ),
   Feedback(
     id: 2,
     name: "Ronald Thompson",
-    review: review,
+    review: kDefaultReview,
     userPic: "assets/images/people.png",
-    color: Color(0xFFD9FFFC),
+    color: kService1Color,
   ),
   Feedback(
     id: 3,
     name: "Ronald Thompson",
-    review: review,
+    review: kDefaultReview,
     userPic: "assets/images/people.png",
-    color: Color(0xFFFFE0E0),
+    color: kService4Color,
   ),
 ];
-
-String review =
-    'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore mag aliqua enim ad minim veniam.';

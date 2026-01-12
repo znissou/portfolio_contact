@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
-import '../constants.dart';
+import '../../constants.dart';
 
+/// A reusable outline button with an icon and text
 class MyOutlineButton extends StatelessWidget {
+  /// Creates an outline button with icon and text
   const MyOutlineButton({
     Key? key,
     required this.imageSrc,
@@ -10,7 +12,13 @@ class MyOutlineButton extends StatelessWidget {
     required this.press,
   }) : super(key: key);
 
-  final String imageSrc, text;
+  /// Path to the button icon image
+  final String imageSrc;
+
+  /// Button text
+  final String text;
+
+  /// Callback when button is pressed
   final Function()? press;
 
   @override
@@ -25,7 +33,6 @@ class MyOutlineButton extends StatelessWidget {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(50),
           ),
-          // borderSide: BorderSide(color: Color(0xFFEDEDED)),
         ),
         onPressed: press,
         child: Row(

@@ -9,7 +9,6 @@ class RecentWork {
       required this.title});
 }
 
-// Demo List of my works
 List<RecentWork> recentWorks = [
   RecentWork(
     id: 1,

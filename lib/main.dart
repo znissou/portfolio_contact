@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio_contact/constants.dart';
-import 'package:portfolio_contact/home_screen.dart';
+import 'package:portfolio_contact/views/home_screen.dart';
 
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -15,7 +14,6 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         inputDecorationTheme: kDefaultInputDecorationTheme,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: HomeScreen(),
     );

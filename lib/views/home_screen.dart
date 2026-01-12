@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio_contact/sections/contact/contact_section.dart';
+import 'package:portfolio_contact/views/contact_section/contact_section.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -9,10 +9,6 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           children: [
             ContactSection(),
-            // This SizeBox just for demo
-            // SizedBox(
-            //   height: 500,
-            // )
           ],
         ),
       ),
