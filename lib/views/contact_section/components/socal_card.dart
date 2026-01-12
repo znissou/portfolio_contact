@@ -54,7 +54,8 @@ class _SocalCardState extends State<SocalCard> {
               SizedBox(width: kDefaultPadding),
               Text(
                 widget.name,
-                style: TextStyle(fontWeight: FontWeight.w600, color: Colors.black87),
+                style: TextStyle(
+                    fontWeight: FontWeight.w600, color: Colors.black87),
               ),
             ],
           ),

@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 
 import '../constants.dart';
 
+/// A reusable section title widget with a colored accent bar
 class SectionTitle extends StatelessWidget {
+  /// Creates a section title widget
   const SectionTitle({
     Key? key,
     required this.title,
@@ -10,22 +12,28 @@ class SectionTitle extends StatelessWidget {
     required this.color,
   }) : super(key: key);
 
-  final String title, subTitle;
+  /// The main title text
+  final String title;
+
+  /// The subtitle text
+  final String subTitle;
+
+  /// The accent color for the vertical bar
   final Color color;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.symmetric(vertical: kDefaultPadding),
-      constraints: BoxConstraints(maxWidth: 1110),
-      height: 100,
+      constraints: const BoxConstraints(maxWidth: 1110),
+      height: kSectionTitleHeight,
       child: Row(
         children: [
           Container(
             margin: EdgeInsets.only(right: kDefaultPadding),
             padding: EdgeInsets.only(bottom: 72),
-            width: 8,
-            height: 100,
+            width: kSectionTitleWidth,
+            height: kSectionTitleHeight,
             color: Colors.black,
             child: DecoratedBox(
               decoration: BoxDecoration(
@@ -39,15 +47,11 @@ class SectionTitle extends StatelessWidget {
             children: [
               Text(
                 subTitle,
-                style:
-                    TextStyle(fontWeight: FontWeight.w200, color: kTextColor),
+                style: kSectionTitleTextStyle,
               ),
               Text(
                 title,
-                style: Theme.of(context)
-                    .textTheme
-                    .displayMedium!
-                    .copyWith(fontWeight: FontWeight.bold, color: Colors.black),
+                style: Theme.of(context).textTheme.displayMedium!.copyWith(fontWeight: FontWeight.bold, color: Colors.black),
               )
             ],
           )

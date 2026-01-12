@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio_contact/constants.dart';
-import 'package:portfolio_contact/home_screen.dart';
+import 'package:portfolio_contact/views/home_screen.dart';
 
 void main() {
   runApp(MyApp());
